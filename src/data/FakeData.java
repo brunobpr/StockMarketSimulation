@@ -72,6 +72,7 @@ public class FakeData {
 	}
 	
 	
+	
 	/**
 	 * @return a double value with two decimal spaces between 1000.00 and 10000.00
 	 */
@@ -87,4 +88,18 @@ public class FakeData {
 		return uniqueID.toString();
 	}
 	
+	
+	public String companyName() {
+		String [] company = {"Inc", "Enterprise", "and Sons", "Corporation", "Corp", "Investments", "Systems", "Industries", 
+				"Technologies", "Factory", "Services", "Global", "International", "Consortium", "Org"};
+		return lastName() + " " + company[random.nextInt(13)];
+	}
+	
+	public double sharePrice() {
+		return  Double.valueOf((new DecimalFormat("#.00")).format(10 + (random.nextDouble() * 100)));
+	}
+	
+	public int numOfShare() {
+		return random.nextInt(500) + 500;
+	}
 }

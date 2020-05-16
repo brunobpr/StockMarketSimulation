@@ -2,6 +2,7 @@ package model;
 
 import java.util.ArrayList;
 
+import data.Company;
 import data.FakeData;
 import data.Investor;
 
@@ -27,6 +28,22 @@ public class Generator {
 			}
 			return listOfInvestor;
 		}
+		
+		public ArrayList companies() {
+			ArrayList<Company> listOfCompany = new ArrayList<Company>();
+			System.out.println("Generating fake Companies...");
+			for (int i = 0; i < 100; i++) {
+				Company.CompanyBuilder builder = new 	Company.CompanyBuilder(fakeData.uniqueID());
+				builder.setName(fakeData.companyName());
+				builder.setNumOfShares(fakeData.numOfShare());
+				builder.setSharePrice(fakeData.sharePrice());
+				listOfCompany.add(builder.build());
+				System.out.println(builder.build());
+			}
+			return listOfCompany;
+		}
+		
+		
 
 
 
