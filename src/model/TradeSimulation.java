@@ -9,14 +9,14 @@ public class TradeSimulation {
 	private Generator generator = Generator.getInstance();
 	private ArrayList<Investor> listOfInvestor;
 	private ArrayList<Company> listOfCompany;
-	private TradeObserver observer;
+	private Observer observer;
 	private int outOfBudget = 0;
 	Random random = new Random();
 
 	public TradeSimulation(ArrayList<Investor> investors, ArrayList<Company> companies) {
 		this.listOfInvestor = investors;
 		this.listOfCompany = companies;
-		observer = new TradeObserver(companies);
+		observer = (Observer) new TradeObserver(companies);
 		start();
 	}
 
@@ -39,12 +39,12 @@ public class TradeSimulation {
 				trade(investor, company);
 				return true;
 			} else {
-				checkBudgetLimitations(investor);
+				budgetChecker(investor);
 				return false;
 			}
 		} else {
 			System.out.println(company.getName() + " is out of businness");
-			observer.removeObserver(company);
+			observer.removeCompany(company);
 			return false;
 		}
 	}
@@ -57,7 +57,7 @@ public class TradeSimulation {
 		observer.update();
 	}
 
-	private boolean checkBudgetLimitations(Investor investor) {
+	private boolean budgetChecker(Investor investor) {
 		for (int i = 0; i < listOfCompany.size(); i++) {
 			if (investor.geBudgte() > listOfCompany.get(i).getSharePrice()) {
 				return true;
