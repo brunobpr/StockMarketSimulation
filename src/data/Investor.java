@@ -24,6 +24,10 @@ public class Investor {
     	return this.budget;
     }
     
+    public void setBudget(double budget) {
+    	this.budget = budget;
+    }
+    
     // This method will generate a well formatted print statement with information
  	// regarding the investor
  	@Override
@@ -55,7 +59,6 @@ public class Investor {
 				return this;
 			}
 
-    	    
 			public Investor build() {
 				return new Investor(this);
 			}
