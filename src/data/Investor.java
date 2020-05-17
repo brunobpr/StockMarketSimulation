@@ -1,15 +1,19 @@
 package data;
 
+import java.util.ArrayList;
 
 public class Investor {
     private String name;
     private String id;
     private double budget;
+    private int numbOfShares;
     
-    private Investor(InvestorBuilder investorBuilder) {
+
+	private Investor(InvestorBuilder investorBuilder) {
     	this.name = investorBuilder.name;
     	this.id = investorBuilder.id;
     	this.budget = investorBuilder.budget;
+    	this.numbOfShares = 0;
     }
     
     public String getName() {
@@ -24,9 +28,15 @@ public class Investor {
     	return this.budget;
     }
     
-    public void setBudget(double budget) {
-    	this.budget = budget;
+    public void buy(double price) {
+    	this.budget = budget - price;
+    	this.numbOfShares++;
     }
+    
+    public int getNumbOfShares() {
+		return numbOfShares;
+	}
+   
     
     // This method will generate a well formatted print statement with information
  	// regarding the investor
