@@ -39,7 +39,8 @@ public class Controller {
 				ResultFacade.getResult(ResultFacade.Trader.INVESTOR, ResultFacade.Performance.BEST, tradeSimulation);
 				getMenuOption();	
 			case "4":
-			
+				ResultFacade.getResult(ResultFacade.Trader.INVESTOR, ResultFacade.Performance.WORST, tradeSimulation);
+				getMenuOption();
 			case "0":
 			
 				System.exit(0);;

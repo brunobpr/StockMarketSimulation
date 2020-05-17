@@ -37,7 +37,7 @@ public class ResultFacade {
 					Printer.investors(Sorter.bestInvestor(investors), "best");
 					break;
 				case WORST:	
-					
+					Printer.investors(Sorter.worstInvestor(investors), "worst");
 					break;
 			}
 			break;
