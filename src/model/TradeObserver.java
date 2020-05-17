@@ -5,12 +5,15 @@ import java.util.ArrayList;
 import data.Company;
 import data.Investor;
 
-public class TradeObserver implements Observer  {
+public enum TradeObserver implements Observer  {
+	
+	instance;
+	
 	private ArrayList<Company> companies;
 	private int numbOfSharesSold = 0;
 	
-	public TradeObserver(ArrayList<Company> companies) {
-		this.companies = companies;
+	private TradeObserver() {
+		companies = new ArrayList<Company>();
 	}
 	
 	
@@ -38,9 +41,14 @@ public class TradeObserver implements Observer  {
 		for(Company company : companies) {
 			if(company.getSharesSold() < 0) {
 				company.setSharePrice( company.getSharePrice() - (company.getSharePrice() * 0.02));
-				System.out.println(company.getName() + " lost value!");
+		 //  System.out.println(company.getName() + " lost value!");
 			}
 		}
 		numbOfSharesSold = 0;
 	}
+	
+	public static TradeObserver getInstance() {
+		return instance;
+	}
+	
 }

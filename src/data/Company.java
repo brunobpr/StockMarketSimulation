@@ -1,15 +1,16 @@
 package data;
 
+import model.TradeObserver;
 import model.TradeSimulation;
 
 public class Company {
-	private TradeSimulation simulation;
+
 	private String name;
 	private String id;
 	private double sharePrice;
 	private int numOfShares;
 	private int sharesSold;
-
+	private TradeObserver observer = TradeObserver.getInstance();
 	
 
 	private Company(CompanyBuilder companyBuilder) {
@@ -18,6 +19,7 @@ public class Company {
 		this.sharePrice = companyBuilder.sharePrice;
 		this.numOfShares = companyBuilder.numOfShares;
 		this.sharesSold = -1;
+		observer.addCompany(this);
 	}
 
 	public String getName() {
@@ -44,14 +46,18 @@ public class Company {
 		this.sharePrice = sharePrice;
 	}
 	
-	public void shareSold() {
+	public void sell() {
 		this.numOfShares--;
 		this.sharesSold++;
-		if (sharesSold < 10) {
+		if (sharesSold == 10) {
 			sharePrice = sharePrice * 2;
-			System.out.println(name + " doubled price!");
+			//System.out.println(name + " doubled price!");
 			sharesSold = 0;
 		}
+		if(numOfShares == 0) {
+			observer.removeCompany(this);
+		}
+		observer.update();
 	}
 
 	@Override
@@ -91,6 +97,7 @@ public class Company {
 		}
 
 		public Company build() {
+			
 			return new Company(this);
 		}
 
