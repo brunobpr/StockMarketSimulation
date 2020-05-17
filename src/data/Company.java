@@ -51,7 +51,7 @@ public class Company {
 		this.sharesSold++;
 		if (sharesSold == 10) {
 			sharePrice = sharePrice * 2;
-			//System.out.println(name + " doubled price!");
+			System.out.println(name + " doubled price!");
 			sharesSold = 0;
 		}
 		if(numOfShares == 0) {
