@@ -15,8 +15,8 @@ public class Investor {
 		this.numbOfShares = 0;
 	}
 
-	//-------------------------GETTERS------------
-	//Nothing new
+	// -------------------------GETTERS------------
+	// Nothing new
 	public String getName() {
 		return this.name;
 	}
@@ -32,11 +32,12 @@ public class Investor {
 	public int getNumbOfShares() {
 		return numbOfShares;
 	}
-	//-------------------------GETTERS------------
-	
+	// -------------------------GETTERS------------
+
 	/**
 	 * This method will be called only if the trade met all the conditions created
 	 * as part of the simulation
+	 * 
 	 * @param price
 	 *            The price of the share the investor is buying
 	 */

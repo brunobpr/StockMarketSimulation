@@ -5,12 +5,14 @@ import data.Company;
 public interface Observer {
 
 	/**
-	 * @param the company to be added to the list
+	 * @param the
+	 *            company to be added to the list
 	 */
 	public void addCompany(Company company);
 
 	/**
-	 * @param the company to be removed from the list
+	 * @param the
+	 *            company to be removed from the list
 	 */
 	public void removeCompany(Company company);
 

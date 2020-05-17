@@ -22,14 +22,13 @@ public class ResultFacade {
 
 	public static void getResult(Trader trader, Performance performance, TradeSimulation tradeSimulation) {
 
-		// All the methos of the class ResultSorter returns ArrayList of Investors/Companies
-		// with High/Low performance
+		// All the methos of the class ResultSorter returns ArrayList of Investors/Companies with High/Low performance
 		// The ArrayList is sent to the Printer according to the type of object and
 		// performance
 		// All the method of the Printer class receives a ArrayList and a string message
 		switch (trader) {
 		case COMPANY:
-			//get the list of companies that participated on the trading day
+			// get the list of companies that participated on the trading day
 			ArrayList<Company> companies = tradeSimulation.getCompanies();
 			switch (performance) {
 			case BEST:
@@ -42,8 +41,8 @@ public class ResultFacade {
 			}
 			break;
 		case INVESTOR:
-			//get the list of investors that participated on the trading day
-			ArrayList<Investor> investors = tradeSimulation.getInvestors(); 
+			// get the list of investors that participated on the trading day
+			ArrayList<Investor> investors = tradeSimulation.getInvestors();
 			switch (performance) {
 			case BEST:
 				// Print the BEST INVESTORS
