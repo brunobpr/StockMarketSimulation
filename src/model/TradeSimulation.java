@@ -23,12 +23,10 @@ public class TradeSimulation {
 		this.listOfInvestor = investors;
 		this.listOfCompany = companies;
 		while (outOfBudget < 100 && outOfBusiness < 100) {
-			for (Investor investor : listOfInvestor) {
+				Investor investor = listOfInvestor.get(random.nextInt(100));
 				Company company = listOfCompany.get(random.nextInt(100));
-				buy(investor, company);
-			}
-		}
-		
+				buy(investor, company);			
+		}	
 		return counter;
 	}
 
@@ -52,7 +50,7 @@ public class TradeSimulation {
 	private void saveInvestment(Investor investor, double badPrice) {
 		for (Company company : listOfCompany) {
 			if (company.getSharePrice() < badPrice) {
-				System.out.println(investor.getName() + " saved " + (badPrice - company.getSharePrice()));
+				System.out.println(investor.getName() + " made a best investment saving " + (badPrice - company.getSharePrice()) +"USD");
 				trade(investor, company);
 				return;
 			}
@@ -62,7 +60,7 @@ public class TradeSimulation {
 	private void trade(Investor investor, Company company) {
 
 		double value = company.getSharePrice();
-		System.out.println(investor.getName() + " bought " + value + " from " + company.getName());
+		System.out.println(investor.getName() + " bought " + value + " from " + company.getName() + " and now has " + investor.geBudgte() +"USD available!");
 		company.sell();
 		investor.buy(value);
 		counter++;
@@ -74,7 +72,8 @@ public class TradeSimulation {
 				return true;
 			}
 		}
-		System.out.println(investor.getName() + " is out of money! " + outOfBudget);
+		System.out.println(investor.getName() + " is out of money with " + investor.getNumbOfShares() + " shares!");
+		System.out.println(outOfBudget);
 		outOfBudget++;
 		return false;
 	}
