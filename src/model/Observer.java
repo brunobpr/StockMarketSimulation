@@ -4,12 +4,24 @@ import data.Company;
 
 public interface Observer {
 
-	void addCompany(Company company);
+	/**
+	 * @param the company to be added to the list
+	 */
+	public void addCompany(Company company);
 
-	void removeCompany(Company company);
+	/**
+	 * @param the company to be removed from the list
+	 */
+	public void removeCompany(Company company);
 
-	void update();
+	/**
+	 * The method called by the companies if there is any change
+	 */
+	public void update();
 
-	void notifyCompanies();
+	/**
+	 * The method resposible to notify all the companies of any change
+	 */
+	public void notifyCompanies();
 
 }

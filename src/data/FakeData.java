@@ -8,6 +8,9 @@ public class FakeData {
 	private static final Random random = new Random();
 	UUID uniqueID;
 	
+	//Part of this Class is reused from my DoublyLinkedList CA
+	//https://github.com/brunobpr/DoublyList
+	
 	public FakeData() {
 	}
 
@@ -74,14 +77,14 @@ public class FakeData {
 	
 	
 	/**
-	 * @return a double value with two decimal spaces between 1000.00 and 10000.00
+	 * @return A random budget between 1000 and 10000 with two decimal value
 	 */
 	public double budget() {
 		return  Double.valueOf((new DecimalFormat("#.00")).format(1000 + (random.nextDouble() * 9000)));
 	}
 	
 	/**
-	 * @return a unique id using the UUID library.
+	 * @return A unique ID using the UUID library. Used for companies and investors
 	 */
 	public String uniqueID() {
 		uniqueID = UUID.randomUUID();
@@ -89,16 +92,26 @@ public class FakeData {
 	}
 	
 	
+	/**
+	 * @return a company name contaning one surname + some of the... things below. For eg: Tolworth Inc
+	 */
 	public String companyName() {
 		String [] company = {"Inc", "Enterprise", "and Sons", "Corporation", "Corp", "Investments", "Systems", "Industries", 
 				"Technologies", "Factory", "Services", "Global", "International", "Consortium", "Org"};
 		return lastName() + " " + company[random.nextInt(13)];
 	}
 	
+	
+	/**
+	 * @return A random share price (between 10 and 100) with two decimaal value
+	 */
 	public double sharePrice() {
 		return  Double.valueOf((new DecimalFormat("#.00")).format(10 + (random.nextDouble() * 100)));
 	}
 	
+	/**
+	 * @return A random number of shares (between 500 and 1000)
+	 */
 	public int numOfShare() {
 		return random.nextInt(500) + 500;
 	}

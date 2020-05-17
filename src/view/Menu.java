@@ -6,6 +6,8 @@ public class Menu {
 		showMenu();
 	}
 
+	
+	//Show the menu options
 	public void showMenu() {
 		System.out.println("Please, choose one option!");
 		System.out.println("[ 1 ] - Highest Company Capital");
@@ -15,6 +17,7 @@ public class Menu {
 		System.out.println("[ 0 ] - Exit");
 	}
 	
+	//Clean the screen a bit
 	public void clean() {
 		for(int i = 0; i <= 20; i++) {
 			System.out.println(" ");

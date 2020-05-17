@@ -55,16 +55,17 @@ public enum TradeObserver implements Observer  {
 	 */
 	@Override
 	public void notifyCompanies() {
-		System.out.println("Shares sold ----------------------------" + numbOfSharesSold);
 		if(numbOfSharesSold < 10) {
 			return;
 		}
 		for(Company company : companies) {
-			if(company.getSharesSold() == 03) {
+			//If any 10 shares are sold (from any company), and a company hasn’t sold any, the price must reduce in 2%
+			if(company.getSharesSold() == 0) {
 				company.setSharePrice( company.getSharePrice() - (company.getSharePrice() * 0.02));
 				System.out.println(company.getName() + " lost 2pc of value because hasn't sold any share!" );
 			}
 		}
+		//Rest the counter
 		numbOfSharesSold = 0;
 	}
 	
